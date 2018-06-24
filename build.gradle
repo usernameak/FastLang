@@ -11,26 +11,32 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
 
-apply plugin: 'forge'
+apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.0"
+version = "1.1"
 group= "usernameak.fastlangmod"
 archivesBaseName = "fastlang"
 
+sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
 minecraft {
-    version = "1.7.10-10.13.4.1614-1.7.10"
+    version = "1.12.2-14.23.2.2611"
     runDir = "eclipse"
+    mappings = "snapshot_20171003"
 }
 
 jar {
 	manifest {
         attributes("FMLCorePlugin": "usernameak.fastlangmod.asm.FastLangLoadingPlugin")
     }
-}
+}2
 
 processResources
 {

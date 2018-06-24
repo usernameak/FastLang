@@ -11,7 +11,6 @@ import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.launchwrapper.IClassTransformer;
 
 public class FastLangClassTransformer implements IClassTransformer {
@@ -34,7 +33,7 @@ public class FastLangClassTransformer implements IClassTransformer {
 					AbstractInsnNode insn = method.instructions.get(i);
 					if (insn.getOpcode() == Opcodes.INVOKEVIRTUAL) {
 						MethodInsnNode minsn = (MethodInsnNode) insn;
-						final String MINECRAFT = isObfuscated ? "bao" : "net/minecraft/client/Minecraft";
+						final String MINECRAFT = isObfuscated ? "bib" : "net/minecraft/client/Minecraft";
 						if (minsn.owner.equals(MINECRAFT) && minsn.desc.equals("()V")) {
 							method.instructions.insertBefore(insn, new InsnNode(Opcodes.POP));
 							method.instructions.insertBefore(insn, new MethodInsnNode(Opcodes.INVOKESTATIC,
